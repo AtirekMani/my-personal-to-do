@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My To-Do</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>To-Do's</h1>
+    </header>
+    <main>
+      <h2>My Tasks</h2>
+      <form id="task-form" action="/tasks" method ="post">
+        <input
+          type="text"
+          id="task-input"
+          name="task"
+          placeholder="What needs to be done?"
+          required
+        />
+
+        <button type="submit">Add Task</button>
+      </form>
+       <ul id="task-list"> 
+        <% tasks.forEach((task)=>{ %>
+             <li data-id="<%= task.id %>">
+                <label>
+                    <input type="checkbox" <%= task.completed ? "checked" : "" %> >
+                    <span><%= task.task %></span>
+                    <button type="button">⌦</button>
+                </label> 
+            </li>
+        <% }); %>
+      </ul>
+    </main>
+    <footer>
+      <p>@2026</p>
+    </footer>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
